@@ -33,9 +33,10 @@
                     <!--<div class="container">-->
                             <thead></thead>
                             <tbody>
-                            <div class="nav-item" sec:authorize="hasAuthority('USER')">
+
                                 <tr th:each="message:${messages}">
                                     <!--<th scope="row"></th>-->
+                                    <div class="nav-item" sec:authorize="hasAuthority('USER')">
                                     <td><b>[[${message.title}]]</b><br/>
                                         <i>[[${message.postedBy}]]</i> | [[${message.postedDate}]]<br/>
                                         [[${message.content}]]<br/>
@@ -46,7 +47,7 @@
                     <a th:href="@{/delete/{id} (id=${message.id})}" class="text-white">Delete</a>
                 </span>
                                         <a th:href="@{/view/{id} (id=${message.id})}" class="text-white">View</a>
-
+                                    </div>
                                         <div class="nav-item" sec:authorize="hasAuthority('ADMIN')">
                                             <a th:href="@{/update/{id} (id=${message.id})}"
                                                class="text-white">Update</a>
@@ -59,7 +60,7 @@
                             </td>
 
                             </tr>
-                            </div>
+
                             </tbody>
 
                         </table>
